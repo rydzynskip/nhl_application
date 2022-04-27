@@ -12,6 +12,9 @@ app.get('/', (req, res) => {
 });
 
 require("./routes/team_routes.js")(app);
+require("./routes/player_routes.js")(app);
+require("./routes/game_routes.js")(app);
+require("./routes/season_routes.js")(app);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

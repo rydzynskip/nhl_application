@@ -100,3 +100,57 @@ exports.delete = (req, res) => {
         }
     });
 };
+
+exports.findPlayers = (req, res) => {
+    Team.findPlayers(req.params.id, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Could not find Team with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Error retrieving Team with id ${req.params.id}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    });
+};
+
+exports.findGames = (req, res) => {
+    Team.findGames(req.params.id, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Could not find Team with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Error retrieving Team with id ${req.params.id}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    });
+};
+
+exports.findRecord = (req, res) => {
+    Team.findRecord(req.params.id, req.params.year, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Could not find Team with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Error retrieving Team with id ${req.params.id}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    });
+};

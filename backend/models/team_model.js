@@ -94,5 +94,60 @@ Team.remove = (id, result) => {
     });
 }; 
 
+Team.findPlayers = (id, result) => {
+    sql.query('CALL getTeamPlayers(?)', [id], (err, res) => {
+        if (err) {
+            console.log('error: ' + err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log('found team\'s players: ', res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        result({ kind: 'not_found' }, null);
+    });
+}; 
+
+Team.findGames = (id, result) => {
+    sql.query('CALL getTeamGames(?)', [id], (err, res) => {
+        if (err) {
+            console.log('error: ' + err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log('found team\'s games: ', res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        result({ kind: 'not_found' }, null);
+    });
+}; 
+
+Team.findRecord = (id, year, result) => {
+    sql.query('CALL getTeamRecord(?, ?)', [id, year], (err, res) => {
+        if (err) {
+            console.log('error: ' + err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log('found team\'s record: ', res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        result({ kind: 'not_found' }, null);
+    });
+}; 
+
+
 module.exports = Team;
 
