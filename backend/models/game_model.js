@@ -50,20 +50,20 @@ Game.create = (newGame, result) => {
 }; 
 
 Game.findAll = (result) => {
-    sql.query('SELECT * FROM game', (err, res) => {
+    sql.query('CALL getAllGames()', (err, res) => {
         if (err) {
             console.log('error: ' + err);
             result(err, null);
             return;
         }
 
-        console.log('games: ', res);
-        result(null, res);
+        console.log('games: ', res[0]);
+        result(null, res[0]);
     });
 };
 
 Game.findById = (id, result) => {
-    sql.query('SELECT * FROM game WHERE game_id=?', [id], (err, res) => {
+    sql.query('CALL getGame(?)', [id], (err, res) => {
         if (err) {
             console.log('error: ' + err);
             result(err, null);
