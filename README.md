@@ -1,4 +1,13 @@
 # nhl_application
+## Description
+Application to show stats on various NHL teams and games. Written using Node.js and React.js with a MySQL database. Completed as a final project for CS3200 - Database Design. 
+
+Future work:
+- Add scripts to pull data from historical games to update the database
+- Add views for individual player statistics
+- More complex querying support for cooler stats an analytics
+
+## Setup
 The following are steps on how to run the application:
 -	Install Node.js (most recent version) - https://nodejs.org/en/
 - NPM should be automatically installed with node.js
